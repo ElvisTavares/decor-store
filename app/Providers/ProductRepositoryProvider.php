@@ -8,13 +8,16 @@ use Illuminate\Support\ServiceProvider;
 
 class ProductRepositoryProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
+
+    public function register()
     {
         $this->app->bind(ProductRepositoryContract::class, ProductRepositoryEloquent::class);
+    }
+
+    public function provides()
+    {
+        return [
+            ProductRepositoryContract::class,
+        ];
     }
 }

@@ -2,7 +2,11 @@
 
 namespace App\Repositories\Product;
 
-class ProductRepositoryEloquent
+use App\Models\Product;
+use App\Repositories\BaseRepositoryEloquent;
+
+class ProductRepositoryEloquent extends BaseRepositoryEloquent implements ProductRepositoryContract
 {
+  protected $model = Product::class;
 
 }
