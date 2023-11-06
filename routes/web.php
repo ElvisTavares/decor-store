@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,11 @@ Route::get('/', function () {
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('.index');
 Route::get('/product/{id}', [\App\Http\Controllers\HomeController::class, 'product'])->name('.product');
+
+Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index']);
+
+Route::post('/login', [\App\Http\Controllers\LoginController::class, 'store'])->name('login');
+Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'destroy'])->name('logout')->middleware('auth');
+
+Route::get('/register', [UsersController::class, 'create'])->name('register');
+Route::post('/register', [UsersController::class, 'store']);
