@@ -15,12 +15,10 @@ class Order extends Model
         'status'
     ];
 
+    //relacionamento personalizado com informaçoes
     public function order_products()
     {
-        return $this->hasMany(OrderProduct::class)
-            ->select(DB::raw('product_id, sum(discount) as discounts, sum(value) as values, count(1) as qtd'))
-            ->groupBy('product_id')
-            ->orderBy('product_id', 'desc');
+        return $this->hasMany(OrderProduct::class);
     }
 
     public function order_products_itens()
@@ -28,7 +26,7 @@ class Order extends Model
         return $this->hasMany(OrderProduct::class);
     }
 
-    public function queryId($where)
+    public static function queryId($where)
     {
         $order = self::where($where)->first(['id']);
         return !empty($order->id) ? $order->id : null;
