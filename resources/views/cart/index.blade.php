@@ -57,7 +57,7 @@
               <td>{{ number_format($order_product->product->price, 2, ',', '.') }}</td>
               <td>{{ number_format($order_product->discount, 2, ',', '.') }}</td>
               @php
-                $total_product = $order_product->value - $order_product->discount;
+                $total_product = $order_product->product->price - $order_product->discount;
                 $total_order += $total_product;
               @endphp
               <td>R$: {{number_format($total_product,  2, ',', '.')}}</td>
