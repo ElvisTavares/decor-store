@@ -18,7 +18,11 @@ class Order extends Model
     //relacionamento personalizado com informaçoes
     public function order_products()
     {
-        return $this->hasMany(OrderProduct::class);
+
+        return $this->hasMany(OrderProduct::class)
+            ->select( \DB::raw('product_id, sum(discount) as discounts, sum(value) as total_values, count(1) as qtd') )
+            ->groupBy('product_id')
+            ->orderBy('product_id', 'desc');
     }
 
     public function order_products_itens()

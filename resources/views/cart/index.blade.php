@@ -39,14 +39,14 @@
         @foreach($order->order_products as $order_product)
           <tr>
               <td>
-                  <img width="100" height="100" src="{{$order_product->image}}" alt="">
+                  <img width="100" height="100" src="{{$order_product->product->image}}" alt="">
               </td>
               <td>
-                  <div class="input-group">
+                  <div class="input-group" style="width: 120px">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default btn-number" data-type="minus">-</button>
                     </span>
-                      <input type="text" class="form-control input-number" value="{{$order_product->qtd}}" min="1" max="100">
+                      <input type="text" class="form-control input-number"  value="{{$order_product->qtd}}" min="1" max="100">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default btn-number" data-type="plus">+</button>
                     </span>
@@ -65,14 +65,14 @@
         @endforeach
         </tbody>
     </table>
-        <div class="row">
+        <div class="row" style="margin-bottom: 20px;">
             <strong>
                 Total do pedido:
             </strong>
             <span>  {{number_format($total_order,  2, ',', '.')}}</span>
         </div>
         <div class="row">
-            <a href="{{route('.index')}}">Continuar comprando</a>
+            <a class="text-secondary" href="{{route('.index')}}">Continuar comprando</a>
         </div>
     @empty
         <h5>Não há nenhum pedido no carrinho</h5>

@@ -18,7 +18,8 @@ class LoginController extends Controller
             return redirect()->back()->withErrors('usuario ou senha inválidos');
         }
 
-        return view ('products.index');
+//        return view ('home.teste');
+        return redirect()->route('.index'); //certo
     }
 
     public function destroy()

@@ -6,14 +6,39 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .custom-navbar {
+            /*background-color: #0047ab;*/
+            background-color: #ff9760;
+        }
+        h4, p {
+            /*color: #ffffff;*/
+            text-align: center;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .img-thumbnail {
+            border:  1px solid #ffdcbf; /* Substitua 'green' pela cor desejada */
+        }
+
+        .custom-btn-link {
+            background-color: #ff9760;
+            border:  1px solid #ffdcbf
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Loja</a>
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+    <a class="navbar-brand" href="#">RobotStore</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,10 +47,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Página Inicial</a>
+                <a class="nav-link" href="{{ route('.index') }}">Página Inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Outra Página</a>
+                <a class="nav-link" href="{{route('cart.index')}}">Meu Carrinho</a>
             </li>
         </ul>
     </div>

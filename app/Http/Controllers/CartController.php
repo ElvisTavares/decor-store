@@ -18,7 +18,7 @@ class CartController extends Controller
     {
         $orders = Order::where([
             'status' => 'RE', // reservado
-            'user_id' => Auth::id(),
+            'user_id' => Auth::id()
         ])->get();
 
 //        dd($order[0]->order_products[0]->product);
