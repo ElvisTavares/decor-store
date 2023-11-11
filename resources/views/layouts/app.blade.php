@@ -9,7 +9,16 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
+
+        body {
+            background-color: #f5f5f5;
+        }
         .custom-navbar {
+            /*background-color: #0047ab;*/
+            background-color: #ff9760;
+        }
+
+        .custom-footer {
             /*background-color: #0047ab;*/
             background-color: #ff9760;
         }
@@ -38,6 +47,10 @@
         button {
             /*background-color: #0047ab;*/
             background-color: #ff9760;
+        }
+
+        .white-background {
+            background-color: #ffffff;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -90,6 +103,9 @@
         @yield('content')
     </div>
 
+<footer class="text-light text-center py-3 fixed-bottom custom-footer">
+    <p>&copy; 2023 Carrinho de Compras. Todos os direitos reservados.</p>
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>

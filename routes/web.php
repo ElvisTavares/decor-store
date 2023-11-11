@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home.teste');
+//    return view('home.index');
+    return to_route('.index');
 });
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('.index');

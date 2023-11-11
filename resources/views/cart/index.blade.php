@@ -17,20 +17,20 @@
     @endif
 
     @forelse($orders as $order)
-        <h5>Pedido: {{$order->id}}</h5>
-        <h5>Criado em: {{ $order->created_at->format('d/m/Y H:i') }}</h5>
-    <table class="table table-striped">
-        <thead>
+        <h5 class="mb-4">Pedido: {{$order->id}}</h5>
+        <h5 class="mb-4">Criado em: {{ $order->created_at->format('d/m/Y H:i') }}</h5>
+    <table class="table mb-4 border border-transparent">
+        <thead class="bg-light">
         <tr>
             <th scope="col"></th>
-            <th scope="col">Qtd</th>
             <th scope="col">Produto</th>
+            <th scope="col">Qtd</th>
             <th scope="col">Valor unitario</th>
             <th scope="col">Desconto</th>
             <th scope="col">Total</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="white-background">
 
         @php
             $total_order = 0;
@@ -41,6 +41,7 @@
               <td>
                   <img width="100" height="100" src="{{$order_product->product->image}}" alt="">
               </td>
+              <td class="align-middle px-4 text-muted">{{$order_product->product->name}}</td>
               <td>
                   <div class="input-group" style="width: 120px">
                     <span class="input-group-btn">
@@ -53,23 +54,23 @@
                   </div>
                   <a href="">Remover produto</a>
               </td>
-              <td>{{$order_product->product->name}}</td>
-              <td>{{ number_format($order_product->product->price, 2, ',', '.') }}</td>
-              <td>{{ number_format($order_product->discount, 2, ',', '.') }}</td>
+
+              <td class="align-middle px-4 text-muted">{{ number_format($order_product->product->price, 2, ',', '.') }}</td>
+              <td class="align-middle px-4 text-muted">{{ number_format($order_product->discount, 2, ',', '.') }}</td>
               @php
                 $total_product = $order_product->product->price - $order_product->discount;
                 $total_order += $total_product;
               @endphp
-              <td>R$: {{number_format($total_product,  2, ',', '.')}}</td>
+              <td class="align-middle px-4 text-muted">R$: {{number_format($total_product,  2, ',', '.')}}</td>
           </tr>
         @endforeach
         </tbody>
     </table>
         <div class="row" style="margin-bottom: 20px;">
             <strong>
-                Total do pedido:
+                Total do pedido: R$
             </strong>
-            <span>  {{number_format($total_order,  2, ',', '.')}}</span>
+            <span class="text-muted">  {{number_format($total_order,  2, ',', '.')}}</span>
         </div>
         <div class="row">
             <a class="text-secondary" href="{{route('.index')}}">Continuar comprando</a>
