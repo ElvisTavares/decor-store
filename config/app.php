@@ -198,8 +198,7 @@ return [
         /*
          * Product
          */
-        App\Providers\ProductServiceProvider::class,
-        App\Providers\ProductRepositoryProvider::class
+        App\Providers\ProductServiceProvider::class,App\Providers\ProductRepositoryProvider::class
 
     ],
 

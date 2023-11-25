@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Products\StoreProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::prefix('products')->group(function () {
    Route::post('/store', StoreProductController::class)->name('.store');
     Route::get('/test', \App\Http\Controllers\Products\StoreProductController::class);
 });
+
+Route::post('/cart/update', [CartController::class, 'add'])->name('.update');

@@ -37,19 +37,24 @@
         @endphp
 
         @foreach($order->order_products as $order_product)
+
           <tr>
               <td>
                   <img width="100" height="100" src="{{$order_product->product->image}}" alt="">
               </td>
-              <td class="align-middle px-4 text-muted">{{$order_product->product->name}}</td>
+              <td class="align-middle px-4 text-muted">{{$order_product->product->name}} {{$order_product->product->id}}</td>
               <td>
                   <div class="input-group" style="width: 120px">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="minus">-</button>
+                        <button id="minus_{{ $order_product->product->id }}" type="button" class="btn btn-default btn-number" data-product-id="{{ $order_product->product->id }}" data-type="minus">
+                            -
+                        </button>
                     </span>
-                      <input type="text" class="form-control input-number"  value="{{$order_product->qtd}}" min="1" max="100">
+                      <input id="quantity_{{ $order_product->product->id }}" type="text" class="form-control input-number"  value="{{$order_product->qtd}}" min="1" max="100">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number" data-type="plus">+</button>
+                        <button id="plus_{{ $order_product->product->id }}" type="button" class="btn btn-default btn-number" data-product-id="{{ $order_product->product->id }}" data-type="plus">
+                            +
+                        </button>
                     </span>
                   </div>
                   <a href="">Remover produto</a>
@@ -63,6 +68,57 @@
               @endphp
               <td class="align-middle px-4 text-muted">R$: {{number_format($total_product,  2, ',', '.')}}</td>
           </tr>
+
+
+          <script>
+              // var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+              $('#plus_{{ $order_product->product->id }}').click(function(e) {
+                  e.preventDefault();
+
+                  var input = $('#quantity_{{ $order_product->product->id }}');
+                  var currentVal = parseInt(input.val());
+
+                  if(!isNaN(currentVal)) {
+                      input.val(currentVal + 1);
+                  }
+
+                  updateCart($(this).attr('data-product-id'), input.val());
+              });
+
+              $('#minus_{{ $order_product->product->id }}').click(function(e) {
+                  e.preventDefault();
+
+                  var input = $('#quantity_{{ $order_product->product->id }}');
+                  var currentVal = parseInt(input.val());
+
+                  if(!isNaN(currentVal) && currentVal > 1) {
+                      input.val(currentVal - 1);
+                  }
+
+                  updateCart($(this).attr('data-product-id'), input.val());
+              });
+
+              function updateCart(productId, newQuantity) {
+                $.ajax({
+
+                    url: '/api/cart/update',
+                    method: 'POST',
+                    data: {
+                        id: productId,
+                        newQuantity: newQuantity
+                    },
+                    success: function(response) {
+
+                    },
+                    error: function (xhr, status, error) {
+
+                    }
+                });
+              }
+
+          </script>
+
         @endforeach
         </tbody>
     </table>
@@ -78,4 +134,5 @@
     @empty
         <h5>Não há nenhum pedido no carrinho</h5>
     @endforelse
+
 @endsection

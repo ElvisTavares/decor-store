@@ -27,6 +27,9 @@ Route::get('/cart/add', function() {
    return redirect()->route('.index');
 });
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+//Route::post('/cart/update', [CartController::class, 'update'])->name('cart.add');
+Route::delete('/cart/remove', [CartController::class, 'delete'])->name('cart.delete');
+
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index']);
 
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'store'])->name('login');
@@ -34,3 +37,7 @@ Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'destroy'])
 
 Route::get('/register', [UsersController::class, 'create'])->name('register');
 Route::post('/register', [UsersController::class, 'store']);
+
+Route::get('/testessss', function(){
+    return view('teste');
+});
