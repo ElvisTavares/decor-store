@@ -69,7 +69,10 @@
               <td class="align-middle px-4 text-muted">R$: {{number_format($total_product,  2, ',', '.')}}</td>
           </tr>
 
-
+          <form action="">
+              {{ csrf_token() }}
+              <input type="hidden">
+          </form>
           <script>
               // var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -100,10 +103,15 @@
               });
 
               function updateCart(productId, newQuantity) {
+                  var csrfToken = $('meta[name="csrf_token"]').attr('content');
+                  console.log(csrfToken);
                 $.ajax({
 
-                    url: '/api/cart/update',
+                    url: 'cart/update',
                     method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
                     data: {
                         id: productId,
                         newQuantity: newQuantity

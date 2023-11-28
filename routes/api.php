@@ -25,4 +25,4 @@ Route::prefix('products')->group(function () {
     Route::get('/test', \App\Http\Controllers\Products\StoreProductController::class);
 });
 
-Route::post('/cart/update', [CartController::class, 'add'])->name('.update');
+//Route::post('/cart/update', [CartController::class, 'add'])->name('.update');
