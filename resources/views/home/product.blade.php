@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="thumbnail">
-                <img src="{{$registro->image}}" alt="Produto 1" class="img-responsive img-thumbnail" style="width: 400px; height: 400px;">
+                <img src="{{asset($registro->image)}}" alt="Produto 1" class="img-responsive img-thumbnail" style="width: 400px; height: 400px;">
             </div>
         </div>
         <div class="col-md-8">

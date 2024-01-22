@@ -69,10 +69,7 @@
               <td class="align-middle px-4 text-muted">R$: {{number_format($total_product,  2, ',', '.')}}</td>
           </tr>
 
-          <form action="">
-              {{ csrf_token() }}
-              <input type="hidden">
-          </form>
+
           <script>
               // var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -130,15 +127,19 @@
         @endforeach
         </tbody>
     </table>
-        <div class="row" style="margin-bottom: 20px;">
+        <div class="row justify-content-end" style="margin-bottom: 20px;">
             <strong>
                 Total do pedido: R$
             </strong>
-            <span class="text-muted">  {{number_format($total_order,  2, ',', '.')}}</span>
+            <span class="text-muted" style="margin-left: 5px;">{{number_format($total_order, 2, ',', '.')}}</span>
         </div>
-        <div class="row">
-            <a class="text-secondary" href="{{route('.index')}}">Continuar comprando</a>
+
+        <div class="row justify-content-end">
+            <button type="button" class="btn" style="background-color: rgba(109, 53, 48, 0.7); color: white;">Continuar comprando</button>
+
         </div>
+
+
     @empty
         <h5>Não há nenhum pedido no carrinho</h5>
     @endforelse

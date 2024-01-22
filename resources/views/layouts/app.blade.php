@@ -15,12 +15,13 @@
         }
         .custom-navbar {
             /*background-color: #0047ab;*/
-            background-color: #ff9760;
+            background-color: #552320;
         }
 
         .custom-footer {
             /*background-color: #0047ab;*/
-            background-color: #ff9760;
+            background-color: #6d3530;
+
         }
         h4, p {
             /*color: #ffffff;*/
@@ -36,8 +37,8 @@
         }
 
         .custom-btn-link {
-            background-color: #ff9760;
-            border:  1px solid #ffdcbf
+            background-color:  #854640;
+            border:  1px solid  #854640;
         }
 
         .left-aligned {
@@ -46,11 +47,11 @@
 
         button {
             /*background-color: #0047ab;*/
-            background-color: #ff9760;
+            background-color: rgba(109, 53, 48, 0.7);
         }
 
-        .white-background {
-            background-color: #ffffff;
+        a.nav-link {
+            color: #ffffff;
         }
     </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -61,7 +62,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
-    <a class="navbar-brand" href="#">RobotStore</a>
+    <a class="navbar-brand" href="#" style="color: #ffffff">Decor3dStore</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -70,10 +71,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('.index') }}">Página Inicial</a>
+                <a class="nav-link" style="color: #ffffff" href="{{ route('.index') }}">Página Inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('cart.index')}}">Meu Carrinho</a>
+                <a class="nav-link" style="color: #ffffff" href="{{route('cart.index')}}">Meu Carrinho</a>
             </li>
         </ul>
     </div>
@@ -81,19 +82,19 @@
     <ul class="navbar-nav ml-auto">
         @guest
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">Entrar</a>
+            <a class="nav-link" href="{{ route('login') }}" style="color: #ffffff">Entrar</a>
         </li>
         @endguest
 
         @guest
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">Registrar</a>
+            <a class="nav-link" href="{{ route('register') }}" style="color: #ffffff">Registrar</a>
         </li>
         @endguest
 
         @auth
         <li>
-            <a class="nav-link" href="{{ route('logout') }}">Sair</a>
+            <a class="nav-link" href="{{ route('logout') }}" style="color: #ffffff">Sair</a>
         </li>
         @endauth
     </ul>
@@ -107,6 +108,7 @@
 <footer class="text-light text-center py-3 fixed-bottom custom-footer">
     <p>&copy; 2023 Carrinho de Compras. Todos os direitos reservados. @ElvisTavares</p>
 </footer>
+
 @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>

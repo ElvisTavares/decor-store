@@ -9,10 +9,11 @@
             @foreach($registros as $registro)
                    <div class="col-md-4 mb-4">
                        <div class="thumbnail">
-                           <img src="{{$registro->image}}" alt="Produto 1" class="img-responsive img-thumbnail" style="width: 320px; height: 320px;">
+{{--                           <img src="{{$registro->image}}" alt="Produto 1" class="img-responsive img-thumbnail" style="width: 320px; height: 320px;">--}}
+                           <img src="{{asset($registro->image)}}" alt="Produto 1" class="img-responsive img-thumbnail" style="width: 320px; height: 320px;">
                            <div class="caption">
                                <h4>{{ $registro->name }}</h4>
-                               <p>{{$registro->description}}</p>
+{{--                               <p>{{$registro->description}}</p>--}}
                                <p>R$ {{ number_format($registro->price, 2, ',', '.') }}</p>
 {{--                               <a href="{{ route('.product', $registro->id) }}">Veja mais informações</a>--}}
 {{--                               <button type="button" class="btn btn-info">Info</button>--}}
